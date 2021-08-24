@@ -4,10 +4,32 @@ namespace _3.MatrixOperations
 {
     class Program
     {
+        static void Adition()
+        {
+            int[,] mat1,mat2;
+            int n, m, i, j;
+
+            Console.Write("Columns for both matrixes: ");
+            n = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Rows for both matrixes: ");
+            m = Convert.ToInt32(Console.ReadLine());
+            mat1 = new int[n, m]; InputMatrix(ref mat1);
+            mat2 = new int[n, m]; InputMatrix(ref mat2);
+            Console.WriteLine(); OutputMatrix(mat1); OutputMatrix(mat2);
+
+            for (i = 0; i < n; i++)
+            {
+                for (j = 0; j < m; j++)
+                {
+                    Console.Write(" {0}", mat1[i, j] + mat2[i, j]);
+                }
+                Console.WriteLine();
+            }
+        }
         static void Multiplication()
         {
             int[,] mat1,mat2;
-            int n1, n2, m1, m2, i, j;
+            int n1, n2, m1, m2, i, j, k, R;
 
             Console.Write("First matrix columns: ");
             n1 = Convert.ToInt32(Console.ReadLine());
@@ -16,23 +38,28 @@ namespace _3.MatrixOperations
             mat1 = new int[n1, m1];
             InputMatrix(ref mat1);
 
-            Console.Write("First matrix columns: {0}", m);
+            Console.WriteLine("Secons matrix columns: {0}", m1);
             n2 = m1;
-            Console.Write("First matrix rows: ");
+            Console.Write("Second matrix rows: ");
             m2 = Convert.ToInt32(Console.ReadLine());
             mat2 = new int[n2, m2];
             InputMatrix(ref mat2);
 
-          /*  for (i = 0; i < n3; i++)
+            Console.WriteLine(); OutputMatrix(mat1); OutputMatrix(mat2);
+
+            Console.WriteLine("Result");
+
+            for (i = 0; i < n1; i++)
             {
                 Console.WriteLine();
-                for (j = 0; j < m3; j++)
+                for (j = 0; j < m2; j++)
                 {
-                    c[i][j] = a[i][0] * b[0][j];
-                    for (k = 1; k < r; k++) c[i][j] += a[i][k] * b[k][j];
-                    System.out.print(c[i][j] + " ");
+                    R = mat1[i, 0] * mat2[0, j];
+                    for (k = 1; k < m1; k++) R += mat1[i, k] * mat2[k, j];
+                    Console.Write("{0} ", R);
                 }
-            }*/
+            }
+            
         }
 
         static void MinMax()
@@ -77,6 +104,7 @@ namespace _3.MatrixOperations
                 }
                 Console.WriteLine();
             }
+            Console.WriteLine();
         }
 
         static void InputMatrix(ref int[,] matrix)
@@ -105,19 +133,26 @@ namespace _3.MatrixOperations
         }
         static void Main(string[] args)
         {
+            int Type;
+
             Console.WriteLine("For matrix adition type 1.");
             Console.WriteLine("For matrix multiplication type 2.");
             Console.WriteLine("For matrix scalar multiplication type 3.");
             Console.WriteLine("To inverse and transpose the matrix type 4.");
             Console.WriteLine("To determine whether a matrix is orthogonal or not type 5.");
             Console.Write("To find the max and min elements in matrix type 6.\nInput option: ");
-
-            //int[,] aaa = new int [2,2];
-            // InputMatrix(ref aaa);
-            // OutputMatrix(in aaa);
-            MinMax();
-
-
+            Type = Convert.ToInt32(Console.ReadLine());
+           
+            switch (Type) 
+            {
+                case 1: Adition(); break;
+                case 2: Multiplication(); break;
+                //case 3: ScalarMul(); break;
+                //case 4: InverseTranspose(); break;
+                //case 5: checkedOrthagonal(); break;
+                case 6: MinMax(); break;
+            }
+            Console.ReadLine();
         }
     }
 }
