@@ -21,7 +21,32 @@ namespace _3.MatrixOperations
             {
                 for (j = 0; j < m; j++)
                 {
-                    Console.Write(" {0}", mat1[i, j] + mat2[i, j]);
+                    Console.Write("{0} ", mat1[i, j] + mat2[i, j]);
+                }
+                Console.WriteLine();
+            }
+        }
+
+        static void ScalarMul() 
+        {
+            int[,] mat;
+            int n, m, i, j, A;
+
+            Console.Write("Matrix columns: ");
+            n = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Matrix rows: ");
+            m = Convert.ToInt32(Console.ReadLine());
+            mat = new int[n, m];
+            InputMatrix(ref mat);
+            Console.WriteLine(); OutputMatrix(mat);
+            Console.Write("Multyply with: ");
+            A = Convert.ToInt32(Console.ReadLine()); Console.WriteLine();
+
+            for (i = 0; i < n; i++)
+            {
+                for (j = 0; j < m; j++)
+                {
+                    Console.Write("{0} ", mat[i, j] * A);
                 }
                 Console.WriteLine();
             }
@@ -147,7 +172,7 @@ namespace _3.MatrixOperations
             {
                 case 1: Adition(); break;
                 case 2: Multiplication(); break;
-                //case 3: ScalarMul(); break;
+                case 3: ScalarMul(); break;
                 //case 4: InverseTranspose(); break;
                 //case 5: checkedOrthagonal(); break;
                 case 6: MinMax(); break;
