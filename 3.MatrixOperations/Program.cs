@@ -4,6 +4,43 @@ namespace _3.MatrixOperations
 {
     class Program
     {
+        static void Transpose()
+        {
+            int[,] mat1, mat2;
+            int n, m;
+
+            Console.Write("Columns for matrix: ");
+            n = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Rows for matrix: ");
+            m = Convert.ToInt32(Console.ReadLine());
+            mat1 = new int[n, m]; InputMatrix(ref mat1); 
+            Console.WriteLine("the matrix"); OutputMatrix(mat1);
+            mat2 = new int[m, n];
+            mat2 = transpose(mat1);
+            Console.WriteLine("result");
+            OutputMatrix(mat2);
+
+        }
+
+        static int[,] transpose(in int[,] Trans)
+        {
+            int[,] mat;
+            int n, m, i, j;
+
+            n = Trans.GetLength(0);
+            m = Trans.GetLength(1);
+            mat = new int[m, n];
+
+            for (i = 0; i < n; i++)
+            {
+                for (j = 0; j < m; j++)
+                {
+                    mat[j, i] = Trans[i, j];
+                }
+            }
+            return mat;
+        }
+
         static void Adition()
         {
             int[,] mat1,mat2;
@@ -163,9 +200,10 @@ namespace _3.MatrixOperations
             Console.WriteLine("For matrix adition type 1.");
             Console.WriteLine("For matrix multiplication type 2.");
             Console.WriteLine("For matrix scalar multiplication type 3.");
-            Console.WriteLine("To inverse and transpose the matrix type 4.");
-            Console.WriteLine("To determine whether a matrix is orthogonal or not type 5.");
-            Console.Write("To find the max and min elements in matrix type 6.\nInput option: ");
+            Console.WriteLine("To transpose the matrix type 4.");
+            //Console.WriteLine("To inverse the matrix type 5.");
+            Console.WriteLine("To determine whether a matrix is orthogonal or not type 6.");
+            Console.Write("To find the max and min elements in matrix type 7.\nInput option: ");
             Type = Convert.ToInt32(Console.ReadLine());
            
             switch (Type) 
@@ -173,9 +211,10 @@ namespace _3.MatrixOperations
                 case 1: Adition(); break;
                 case 2: Multiplication(); break;
                 case 3: ScalarMul(); break;
-                //case 4: InverseTranspose(); break;
-                //case 5: checkedOrthagonal(); break;
-                case 6: MinMax(); break;
+                case 4: Transpose(); break;
+                //case 5: Inverse(); break;
+                //case 6: checkedOrthagonal(); break;
+                case 7: MinMax(); break;
             }
             Console.ReadLine();
         }
