@@ -202,7 +202,7 @@ namespace _3.MatrixOperations
             Console.WriteLine("For matrix scalar multiplication type 3.");
             Console.WriteLine("To transpose the matrix type 4.");
             //Console.WriteLine("To inverse the matrix type 5.");
-            Console.WriteLine("To determine whether a matrix is orthogonal or not type 6.");
+            //Console.WriteLine("To determine whether a matrix is orthogonal or not type 6.");
             Console.Write("To find the max and min elements in matrix type 7.\nInput option: ");
             Type = Convert.ToInt32(Console.ReadLine());
            
