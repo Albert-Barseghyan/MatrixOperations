@@ -28,8 +28,8 @@ namespace _3.MatrixOperations
                         x = i >= a ? 1 : 0;
                         for (j = 0; j < n - 1; j++)
                         {
-                            y = i >= b ? 1 : 0;
-                            A[i, j] = mat[j+y, i + x];
+                            y = j >= b ? 1 : 0;
+                            A[i, j] = mat[j + y, i + x];
                         }
                     } 
                     Console.Write("{1}/{0}  ", D ,Determinant(A) * (int)Math.Pow(-1, 2 + a + b));
